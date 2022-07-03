@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Listasocios;
 use App\Http\Livewire\RInventarioPeliculas;
 use App\Http\Livewire\Alquilersocios;
+use App\Http\Livewire\Gananciasmensuales;
+use App\Http\Livewire\Alquilergeneros;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,10 +44,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	Route::view('rinventariopeliculas', 'livewire.inventarioPeliculas.index')->middleware('auth');
 	Route::view('listasocios', 'livewire.listaSocios.index')->middleware('auth');
 	Route::view('alquilersocios', 'livewire.alquilerSocio.index')->middleware('auth');
+	Route::view('gananciasmensuales', 'livewire.gananciasMensuales.index')->middleware('auth');
+	Route::view('alquilergeneros', 'livewire.alquilerGeneros.index')->middleware('auth');
 
 
 // pdf
 Route::get('/listasocios/pdf', [Listasocios::class, 'livewirePdf'])->name('listasocios/pdf');
 Route::get('/listapeliculas/pdf', [RInventarioPeliculas::class, 'livewirePdf'])->name('listapeliculas/pdf');
 Route::get('/alquilersocios/pdf', [Alquilersocios::class, 'livewirePdf'])->name('alquilersocios/pdf');
+Route::get('/gananciasgeneros/pdf', [Alquilersocios::class, 'livewirePdf'])->name('gananciasgeneros/pdf');
+Route::get('/alquilergeneros/pdf', [Alquilersocios::class, 'livewirePdf'])->name('alquilergeneros/pdf');
 // Route::view('listasocios/pdf', 'livewire.listaSocios.pdf')->middleware('auth');

@@ -369,7 +369,7 @@ return [
                 ],
                 [
                     'text' => 'Ganancias',
-                    'url'  => 'ganancias',
+                    'url'  => 'gananciasmensuales',
                     'icon' => 'fas fa-fw fa-cash-register',
                 ],
                 [
