@@ -14,6 +14,7 @@
 						@endif
 						<div>
 							<select wire:model='keyWord' type="text" class="form-control" name="search" id="search">
+								<option value="">Todos los meses</option>
 								<option value="01">Enero</option>
 								<option value="02">Febrero</option>
 								<option value="03">Marzo</option>
@@ -28,12 +29,15 @@
 								<option value="12">Diciembre</option>
 							</select>
 						</div>
+						<div>
+							<a href="{{ 'listapeliculas/pdf' }}" class="btn btn-sm btn-info" data-placement="left">
+							<i class="fa fa-file-pdf"></i>  PDF
+							</a>
+						</div>
 					</div>
 				</div>
 				
 				<div class="card-body">
-						@include('livewire.peliculas.create')
-						@include('livewire.peliculas.update')
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">

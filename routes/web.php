@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Listasocios;
+use App\Http\Livewire\RInventarioPeliculas;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // pdf
 Route::get('/listasocios/pdf', [Listasocios::class, 'livewirePdf'])->name('listasocios/pdf');
+Route::get('/listapeliculas/pdf', [RInventarioPeliculas::class, 'livewirePdf'])->name('listapeliculas/pdf');
 // Route::view('listasocios/pdf', 'livewire.listaSocios.pdf')->middleware('auth');

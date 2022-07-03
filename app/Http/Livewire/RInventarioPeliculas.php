@@ -34,4 +34,22 @@ class RInventarioPeliculas extends Component
 						->paginate(10),
         ]);
     }
+
+    public function livewirePdf()
+    {
+        $keyWord = '%'.$this->keyWord .'%';
+        $data = [
+            'peliculas' => Pelicula::latest()
+                ->orWhere('pelnombre', 'LIKE', $keyWord)
+                ->orWhere('gen_id', 'LIKE', $keyWord)
+                ->orWhere('dir_id', 'LIKE', $keyWord)
+                ->orWhere('for_id', 'LIKE', $keyWord)
+                ->orWhere('pelfechaestreno', 'LIKE', $keyWord)
+                ->paginate(1000),
+        ];
+    
+        $pdf = \PDF::loadView('livewire.inventarioPeliculas.pdf', $data);
+    
+        return $pdf->download('listaPeliculas.pdf');
+    }
 }
