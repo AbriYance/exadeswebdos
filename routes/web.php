@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Listasocios;
 use App\Http\Livewire\RInventarioPeliculas;
+use App\Http\Livewire\Alquilersocios;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,10 +41,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	Route::view('sexos', 'livewire.sexos.index')->middleware('auth');
 	Route::view('rinventariopeliculas', 'livewire.inventarioPeliculas.index')->middleware('auth');
 	Route::view('listasocios', 'livewire.listaSocios.index')->middleware('auth');
-	Route::view('alquilersocio', 'livewire.alquilerSocio.index')->middleware('auth');
+	Route::view('alquilersocios', 'livewire.alquilerSocio.index')->middleware('auth');
 
 
 // pdf
 Route::get('/listasocios/pdf', [Listasocios::class, 'livewirePdf'])->name('listasocios/pdf');
 Route::get('/listapeliculas/pdf', [RInventarioPeliculas::class, 'livewirePdf'])->name('listapeliculas/pdf');
+Route::get('/alquilersocios/pdf', [Alquilersocios::class, 'livewirePdf'])->name('alquilersocios/pdf');
 // Route::view('listasocios/pdf', 'livewire.listaSocios.pdf')->middleware('auth');

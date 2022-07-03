@@ -30,30 +30,28 @@
 </head>
 <body>
                 <div class="table-responsive">
-					<table class="table table-sm" id="soc">
-						<thead class="thead-light">
+                <table class="table table-bordered table-sm" id="soc">
+						<thead class="thead">
 							<tr> 
-								<td scope="col">#</td> 
-								<th scope="col">Cédula</th>
-								<th scope="col">Nombre</th>
-								<th scope="col">Direccion</th>
-								<th scope="col">Teléfono</th>
-								<th scope="col">Correo</th>
+								<td>#</td> 
+								<th>Socio</th>
+								<th>Pelicula</th>
+								<th>Facha Alquiler</th>
+								<th>Costo</th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($socios as $row)
+							@foreach($alquilers as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->soccedula }}</td>
-								<td>{{ $row->socnombre }}</td>
-								<td>{{ $row->socdireccion }}</td>
-								<td>{{ $row->soctelefono }}</td>
-								<td>{{ $row->soccorreo }}</td>
+								<td>{{ $row->socio->socnombre }}</td>
+								<td>{{ $row->pelicula->pelnombre }}</td>
+								<td>{{ $row->alqfechadesde }}</td>
+								<td>{{ $row->alqcosto }}</td>
 							@endforeach
 						</tbody>
 					</table>						
-					{{ $socios->links() }}
+					{{ $alquilers->links() }}
 				</div>
 </body>
 </html>

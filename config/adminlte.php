@@ -355,27 +355,27 @@ return [
                 [
                     'text' => 'Inventario Peliculas',
                     'url'  => 'rinventariopeliculas',
-                    'icon' => 'fas fa-fw fa-users',
+                    'icon' => 'fas fa-fw fa-box',
                 ],
                 [
                     'text' => 'Registro de Socios',
                     'url'  => 'listasocios',
-                    'icon' => 'fas fa-fw fa-shopping-cart',
+                    'icon' => 'fas fa-fw fa-list',
                 ],
                 [
                     'text' => 'Historial Alquiler',
-                    'url'  => 'alquilersocio',
-                    'icon' => 'fas fa-fw fa-shopping-cart',
+                    'url'  => 'alquilersocios',
+                    'icon' => 'fas fa-fw fa-clock',
                 ],
                 [
                     'text' => 'Ganancias',
-                    'url'  => 'alquilers',
-                    'icon' => 'fas fa-fw fa-shopping-cart',
+                    'url'  => 'ganancias',
+                    'icon' => 'fas fa-fw fa-cash-register',
                 ],
                 [
                     'text' => 'Alquileres Por Genero',
-                    'url'  => 'alquilers',
-                    'icon' => 'fas fa-fw fa-shopping-cart',
+                    'url'  => 'alquilergeneros',
+                    'icon' => 'fas fa-fw fa-folder-plus',
                 ],
             ]
         ],
