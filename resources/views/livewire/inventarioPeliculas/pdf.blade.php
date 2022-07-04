@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-	<!-- <link href="{{ public_path('css/app.css') }}" rel="stylesheet" type="text/css">
-	 @livewireStyles -->
+	<!-- <link href="{{ public_path('css/app.css') }}" rel="stylesheet" type="text/css"> -->
+	 @livewireStyles
 
     <style>
         #soc{
@@ -29,6 +29,7 @@
     </style>
 </head>
 <body>
+    <div align="center"><img src="/public/vendor/adminlte/dist/img/cine2.png"></div>
                 <div class="table-responsive">
 					<table class="table table-sm" id="soc">
 						<thead class="thead-light">

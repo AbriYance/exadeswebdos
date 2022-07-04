@@ -19,7 +19,7 @@ class RInventarioPeliculas extends Component
 
     public function render()
     {
-        $keyWord = '%'.$this->keyWord .'%';
+        $keyWord = '_____'.$this->keyWord .'%';
         $generos = Genero::pluck('gennombre', 'id');
         $directors = Director::pluck('dirnombre', 'id');
         $formatos = Formato::pluck('fornombre', 'id');
@@ -31,21 +31,17 @@ class RInventarioPeliculas extends Component
 						->orWhere('pelnombre', 'LIKE', $keyWord)
 						->orWhere('pelcosto', 'LIKE', $keyWord)
 						->orWhere('pelfechaestreno', 'LIKE', $keyWord)
-						->paginate(10),
+						->paginate(15),
         ]);
     }
 
     public function livewirePdf()
     {
-        $keyWord = '%'.$this->keyWord .'%';
+        $keyWord = '_____'.$this->keyWord .'%';
         $data = [
             'peliculas' => Pelicula::latest()
-                ->orWhere('pelnombre', 'LIKE', $keyWord)
-                ->orWhere('gen_id', 'LIKE', $keyWord)
-                ->orWhere('dir_id', 'LIKE', $keyWord)
-                ->orWhere('for_id', 'LIKE', $keyWord)
                 ->orWhere('pelfechaestreno', 'LIKE', $keyWord)
-                ->paginate(1000),
+                ->paginate(Pelicula::count()),
         ];
     
         $pdf = \PDF::loadView('livewire.inventarioPeliculas.pdf', $data);
