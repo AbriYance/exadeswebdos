@@ -6,7 +6,7 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="fab fa-laravel text-info"></i>
+							<h4><i class="fa fa-video text-info"></i>
 							Listando Peliculas </h4>
 						</div>
 						@if (session()->has('message'))
@@ -14,7 +14,7 @@
 						@endif
 						<div>
 							<select wire:model='keyWord' type="text" class="form-control" name="search" id="search">
-								<option value="">Todos los meses</option>
+								<option value="">Elija un mes</option>
 								<option value="01">Enero</option>
 								<option value="02">Febrero</option>
 								<option value="03">Marzo</option>

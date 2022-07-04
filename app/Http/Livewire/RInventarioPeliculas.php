@@ -25,11 +25,6 @@ class RInventarioPeliculas extends Component
         $formatos = Formato::pluck('fornombre', 'id');
         return view('livewire.inventarioPeliculas.view',['generos' => $generos,'directors' => $directors,'formatos' => $formatos],[
             'peliculas' => Pelicula::latest()
-						->orWhere('gen_id', 'LIKE', $keyWord)
-						->orWhere('dir_id', 'LIKE', $keyWord)
-						->orWhere('for_id', 'LIKE', $keyWord)
-						->orWhere('pelnombre', 'LIKE', $keyWord)
-						->orWhere('pelcosto', 'LIKE', $keyWord)
 						->orWhere('pelfechaestreno', 'LIKE', $keyWord)
 						->paginate(15),
         ]);

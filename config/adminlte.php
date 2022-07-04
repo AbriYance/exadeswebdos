@@ -348,8 +348,8 @@ return [
         ],
         [
             'text'    => 'Reportes',
-            'icon'    => 'fas fa-briefcase',
-            'icon_color' => 'danger',
+            'icon'    => 'fas fa-file-export',
+            'icon_color' => 'info',
             'labe'    => 'danger',
             'submenu' => [
                 [

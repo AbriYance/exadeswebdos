@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Sexos')
+@section('title', 'Inventario de Peliculas')
 
 @section('content_header')
     <h1>Inventario Peliculas</h1>
