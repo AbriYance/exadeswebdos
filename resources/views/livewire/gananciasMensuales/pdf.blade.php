@@ -1,13 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="dns-prefetch" href="//fonts.gstatic.com">
-   <link href="{{ public_path('css/app.css') }}" rel="stylesheet" type="text/css">
-   <title>PDF</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+	<!-- <link href="{{ public_path('css/app.css') }}" rel="stylesheet" type="text/css"> -->
+	 @livewireStyles
+
+    <style>
+        #soc{
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse:collapse:
+            width:100;
+        }
+        #soc td, #soc th{
+            border:1px solid #ddd;
+            padding: 8px;
+        }
+        #soc th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: #fff;
+        }
+        h1 {
+			font-size: 32px;
+			text-align: center;
+			background: -webkit-linear-gradient(#eeeeee, #333333);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+        p{
+            text-align: center;
+        }
+    </style>
 </head>
+<body>
+
+    <h1>REPORTE DE SOCIOS</h1>
+	<p>Reporte sobre la lista de los socios existentes en la plataforma digital CineJAM</p>
+
 
 <body style="background-color: white;">
    <div class="container">

@@ -40,7 +40,7 @@
 </head>
 <body>
 
-    <h1>REPORTE DE SOCIOS</h1>
+    <h1>REPORTE DE ALQUILER SOCIOS</h1>
 	<p>Reporte sobre la lista de los socios existentes en la plataforma digital CineJAM</p>
 
                 <div class="table-responsive">

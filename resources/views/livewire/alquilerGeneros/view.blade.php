@@ -5,7 +5,7 @@
 
     <div class="row">
         <div class="col mt-4 mb-4">
-            <h2 class="text-center"><b>Reporte Ganancias Mensuales</b></h2>
+            <h2 class="text-center"><b>Alquileres Mensuales Por Género</b></h2>
         </div>
     </div>
     <div class="row">
