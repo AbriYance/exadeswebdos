@@ -29,7 +29,7 @@
     </style>
 </head>
 <body>
-    <div align="center"><img src="/public/vendor/adminlte/dist/img/cine2.png"></div>
+    <div align="center"><img src="/vendor/adminlte/dist/img/cine2.png"></div>
                 <div class="table-responsive">
 					<table class="table table-sm" id="soc">
 						<thead class="thead-light">

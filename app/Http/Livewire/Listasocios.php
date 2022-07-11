@@ -11,7 +11,7 @@ class Listasocios extends Component
 {
     use WithPagination;
 
-	protected $paginationTheme = 'bootstrap';
+    protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $soccedula, $socnombre, $socdireccion, $soctelefono, $soccorreo;
     public $updateMode = false;
     public $name = "";
@@ -25,24 +25,24 @@ class Listasocios extends Component
     public function render()
     {
         $socios = Socio::OrderBy($this->sortColumn,$this->sortDirection);
-		
+        
         if($this->socnombre){
             $socios->where('socnombre','LIKE', $keyWord)
                     ->where('created_at','LIKE', $keyWord);
         }
         
-        $socios = $socios->paginate(20);
+        $socios = $socios->paginate(25);
 
         return view('livewire.listaSocios.view',['socios'=>$socios]);
 
         // $keyWord = '%'.$this->keyWord .'%';
         // return view('livewire.listaSocios.view', ['socios'=>$socios], [
-        //     // 'socios' => Socio::OrderBy($this->sortColumn,$this->sortDirection);
+        //     //'socios' => Socio::OrderBy($this->sortColumn,$this->sortDirection);
         //     'socios' => Socio::latest()
-		// 				->orWhere('socnombre', 'LIKE', $keyWord)
+        //              ->orWhere('socnombre', 'LIKE', $keyWord)
         //                 // ->OrderBy($this->sortColumn,$this->sortDirection)
-		// 				//->orderBy('socnombre', 'LIKE', $keyWord)
-		// 				->paginate(25),
+        //              //->orderBy('socnombre', 'LIKE', $keyWord)
+        //              ->paginate(25),
         // ]);
 
     }

@@ -29,11 +29,12 @@
     </style>
 </head>
 <body>
+    <h1></h1>
                 <div class="table-responsive">
                 <table class="table table-bordered table-sm" id="soc">
 						<thead class="thead">
 							<tr> 
-								<td>#</td> 
+								<th>#</th> 
 								<th>Socio</th>
 								<th>Pelicula</th>
 								<th>Facha Alquiler</th>

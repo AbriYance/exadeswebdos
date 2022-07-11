@@ -3,55 +3,75 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use Livewire\WithPagination;
-use App\Models\Alquiler;
-use App\Models\Socio;
+use App\Models\Genero;
 use App\Models\Pelicula;
+use App\Models\Alquiler;
 
 class Gananciasmensuales extends Component
 {
-    use WithPagination;
-
-	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $soc_id, $pel_id, $alqfechadesde, $alqfechahasta, $alqcosto, $alqfechaentrega;
-    public $updateMode = false;
-
+    public $filtro_mes, $filtro_gen, $list_pel, $resultFound, $num_busq, $porcentajes, $porcentajes_lbl, $ing_total;
     public function render()
     {
-		$keyWord = '%'.$this->keyWord .'%';
-        $socios = Socio::pluck('socnombre', 'id');
-        $peliculas = Pelicula::pluck('pelnombre', 'id');
-        return view('livewire.alquilerSocio.view', ['socios' => $socios, 'peliculas' => $peliculas],[
-            'alquilers' => Alquiler::latest()
-						->where('soc_id', 'LIKE', $keyWord)
-						->paginate(20),
-        ]);
-
-        // $keyWord = '%'.$this->keyWord .'%';
-        // $socios = Socio::pluck('socnombre', 'id');
-        // $peliculas = Pelicula::pluck('pelnombre', 'id');
-        // return view('livewire.alquilerSocio.view', ['socios' => $socios, 'peliculas' => $peliculas],[
-        //     'alquilers' => Alquiler::latest()
-		// 				->orWhere('soc_id', 'LIKE', $keyWord)
-		// 				->orWhere('pel_id', 'LIKE', $keyWord)
-		// 				->orWhere('alqfechadesde', 'LIKE', $keyWord)
-		// 				->orWhere('alqfechahasta', 'LIKE', $keyWord)
-		// 				->orWhere('alqcosto', 'LIKE', $keyWord)
-		// 				->orWhere('alqfechaentrega', 'LIKE', $keyWord)
-		// 				->paginate(10),
-        // ]);
+        $generos = Genero::pluck('gennombre','id');
+        $meses=collect(
+            [
+                '01'=>'Enero','02'=>'Febrero','03'=>'Marzo','04'=>'Abril','05'=>'Mayo','06'=>'Junio',
+                '07'=>'Julio','08'=>'Agosto','09'=>'Septiembre','10'=>'Octubre','11'=>'Noviembre','12'=>'Diciembre',
+            ]
+        );
+        $spm = 0;
+        return view('livewire.gananciasMensuales.view',compact('generos','meses','spm'));
     }
 
-    public function livewirePdf()
-    {
-        $keyWord = '%'.$this->keyWord .'%';
-        $data = [
-            'alquilers' => Alquiler::latest()
-                            ->paginate(1000),
-        ];
-    
-        $pdf = \PDF::loadView('livewire.alquilerSocio.pdf', $data);
-    
-        return $pdf->download('alquilerSocios.pdf');
+    public function getPelIncome($mes, $genero){
+        //dd($mes,$genero);
+        $peliculas = Pelicula::all()->where('gen_id', $genero);
+        $list = [];
+        foreach($peliculas as $pelicula)
+        {
+            $item = collect(
+                [
+                    'num_alq'    => Alquiler::all()->whereBetween('alqfechadesde', ['2022-0'.$mes.'-01', '2022-0'.$mes.'-31'])->where('pel_id',$pelicula->id)->count(),
+                    'pelnombre' => $pelicula->id,
+                    'pelnombre' => $pelicula->pelnombre,
+                    'pelcosto' => $pelicula->pelcosto,
+                    'total'      => Alquiler::all()->whereBetween('alqfechadesde', ['2022-0'.$mes.'-01', '2022-0'.$mes.'-31'])->where('pel_id',$pelicula->id)->sum('alqcosto'),
+                ]
+            );
+            if($item['num_alq'] > 0){
+                array_push($list, $item);
+            }
+        }
+        
+        $suma_tot = 0;
+        for($i=0; $i<count($list); $i++){
+            $suma_tot = $suma_tot + $list[$i]['total'];
+        }
+
+        $percentage = [];
+        $percentage_labels = [];
+        for($i=0; $i<count($list); $i++){
+            array_push($percentage,($list[$i]['total']*100)/$suma_tot);
+            array_push($percentage_labels,($list[$i]['pelnombre']));
+        }
+        $this->porcentajes = $percentage;
+        $this->porcentajes_lbl = $percentage_labels;
+        $this->ing_total = $suma_tot;
+        //dd($suma_tot, $percentage);
+
+        $this->list_pel = $list;
+        if(count($list)>0){
+            $this->resultFound = true;
+        }else{
+            $this->num_busq = 1;
+            $this->resultFound = false;
+        }
+    }
+    public function restData(){
+        $this->num_busq = 0;
+    }
+
+    public function renderData(){
+        $this->num_busq = 1;
     }
 }
