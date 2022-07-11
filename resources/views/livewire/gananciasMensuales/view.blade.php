@@ -30,7 +30,7 @@
                 class="btn btn-info @if (!$filtro_mes || !$filtro_gen) disabled @endif"><i class="fa fa-search"></i></button>
         </div>
         <div class="col">
-            <a href="/reporte-top/pdf" class="btn btn-info" style="float: right;">
+            <a href="/gananciasgeneros/pdf" class="btn btn-info" style="float: right;">
                 <span><b>PDF</b></span>
                 <i class="fa fa-file-pdf"></i>
             </a>
