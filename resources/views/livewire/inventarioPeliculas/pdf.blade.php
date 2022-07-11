@@ -26,10 +26,23 @@
             background-color: #4CAF50;
             color: #fff;
         }
+        h1 {
+			font-size: 32px;
+			text-align: center;
+			background: -webkit-linear-gradient(#eeeeee, #333333);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+        p{
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <div align="center"><img src="/vendor/adminlte/dist/img/cine2.png"></div>
+
+    <h1>REPORTE DE SOCIOS</h1>
+	<p>Reporte sobre la lista de los socios existentes en la plataforma digital CineJAM</p>
+
                 <div class="table-responsive">
 					<table class="table table-sm" id="soc">
 						<thead class="thead-light">

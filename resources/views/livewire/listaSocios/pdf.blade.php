@@ -29,10 +29,6 @@
         h2{
             display:inline-block;
         }
-        
-        img{
-        display:inline-block;
-        }
 		h1 {
 			font-size: 32px;
 			text-align: center;
