@@ -49,9 +49,8 @@
 
     <div class="row">
         @if ($list_pel)
-        <div style="text-center">
-            <table class="table table-bordered">
-                <thead >
+            <table class="table table-bordered table-sm">
+                <thead class="thead-light">
                     <tr class="bg-succes">
                         <th scope="col" class="text-center"># Veces Alquiladas</th>
                         <th scope="col" class="text-center">Nombre</th>
@@ -74,13 +73,13 @@
                   </tr>
                 </tbody>
             </table>
-         </div>
+    </div>
             @if($num_busq == 0)
                 <div class="col-6">
                     <p style="min-height: 750px; height: 850px; max-height: 850px; max-width: 100%; min-width: 100%;">Cargando...</p>
                 </div>
             @else
-               <div class="col-6" wire:ignore style="text-align:center;">
+               <div wire:ignore style="text-align:center;">
                   <canvas id="myChart" style="min-height: 250px; height: 350px; max-height: 350px; max-width: 100%; min-width: 100%;"></canvas>
                </div>
                <script>
@@ -117,5 +116,5 @@
 
 
         </div>
-        </div>
+    </div>
 </div>
