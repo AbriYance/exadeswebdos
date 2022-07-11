@@ -1,23 +1,17 @@
 @section('title', __('Ingresos'))
 <div class="container-fluid p-5">
-    <div class="row">
-        <div class="col">
-            <img class="logo" src="vendor/adminlte/dist/img/logo-small.png" width="100px" heigh="100px">
-        </div>
-        <div class="col">
-            <img class="logo" style="float: right;" src="vendor/adminlte/dist/img/cineflix-logo.png" width="200px"
-                heigh="200px">
-        </div>
-    </div>
+    <div class="card bg-dark">
+    <div class="card-header">
+
     <div class="row">
         <div class="col mt-4 mb-4">
-            <h2 class="text-center"><b>Reporte Ingresos</b></h2>
+            <h2 class="text-center"><b>Reporte Ganancias Mensuales</b></h2>
         </div>
     </div>
     <div class="row">
         <div class="col">
             <select wire:model="filtro_mes" name="opcion" id="select" class="form-control" wire:click="restData()">
-                <option value="1">-- Seleccione una mes </option>
+                <option value="1">Escoja el mes </option>
                 @foreach ($meses as $num => $mes)
                     <option value="{{ $num }}"> {{ $mes }} </option>
                 @endforeach
@@ -25,7 +19,7 @@
         </div>
         <div class="col">
             <select wire:model="filtro_gen" name="opcion" id="select" class="form-control" wire:click="restData()">
-                <option value="1">-- Seleccione un Genero</option>
+                <option value="1">Escoja un Genero</option>
                 @foreach ($generos as $id => $genero)
                     <option value="{{ $id }}"> {{ $genero }} </option>
                 @endforeach
@@ -33,29 +27,35 @@
         </div>
         <div class="col">
             <button wire:click.prevent="getPelIncome({{ $filtro_mes }}, {{ $filtro_gen }})" wire:click="renderData()"
-                class="btn btn-danger @if (!$filtro_mes || !$filtro_gen) disabled @endif">Generar</button>
+                class="btn btn-info @if (!$filtro_mes || !$filtro_gen) disabled @endif"><i class="fa fa-search"></i></button>
         </div>
         <div class="col">
-            <a href="/reporte-top/pdf" class="btn btn-success" style="float: right;">
-                <span><b>Descargar</b></span>
-                <i class="ion-ios-cloud-download p-1"></i>
+            <a href="/reporte-top/pdf" class="btn btn-info" style="float: right;">
+                <span><b>PDF</b></span>
+                <i class="fa fa-file-pdf"></i>
             </a>
         </div>
     </div>
     <div class="row">
-        <div class="col mt-4 mb-4">
-            <h3>Ingresos mensuales <i class="ion ion-ios-people pr-3"></i><i class="ion ion-ios-film"></i></h3>
-        </div>
+        <!-- <div class="col mt-4 mb-4">
+            <h3>Balance de Ganancias <i class="ion ion-ios-people pr-3"></i><i class="ion ion-ios-film"></i></h3>
+        </div> -->
     </div>
+
+    <div class="row">
+        <p></p>
+        <p></p>
+    </div>
+
     <div class="row">
         @if ($list_pel)
-        <div class="col-6">
+        <div style="text-center">
             <table class="table table-bordered">
-                <thead>
-                    <tr class="bg-danger">
-                        <th scope="col" class="text-center"># Alquileres Pelicula</th>
-                        <th scope="col" class="text-center">Nombre Película</th>
-                        <th scope="col" class="text-center">Precio</th>
+                <thead >
+                    <tr class="bg-succes">
+                        <th scope="col" class="text-center"># Veces Alquiladas</th>
+                        <th scope="col" class="text-center">Nombre</th>
+                        <th scope="col" class="text-center">Costo</th>
                         <th scope="col" class="text-center">Ingreso Generado</th>
                     </tr>
                 </thead>
@@ -70,17 +70,17 @@
                         </tr>
                     @endforeach
                     <tr class="table-secondary">
-                     <td colspan="4" class="text-center"><b>Ingresos totales: <span class="text-success ml-1">{{number_format($ing_total,2,'.',',')}}$</span></b>  </td>
+                     <td colspan="4" class="text-center"><b>Total: <span class="text-success ml-1">{{number_format($ing_total,2,'.',',')}}$</span></b>  </td>
                   </tr>
                 </tbody>
             </table>
          </div>
             @if($num_busq == 0)
                 <div class="col-6">
-                    <p style="min-height: 250px; height: 350px; max-height: 350px; max-width: 100%; min-width: 100%;">Procesando...</p>
+                    <p style="min-height: 750px; height: 850px; max-height: 850px; max-width: 100%; min-width: 100%;">Cargando...</p>
                 </div>
             @else
-               <div class="col-6" wire:ignore>
+               <div class="col-6" wire:ignore style="text-align:center;">
                   <canvas id="myChart" style="min-height: 250px; height: 350px; max-height: 350px; max-width: 100%; min-width: 100%;"></canvas>
                </div>
                <script>
@@ -115,5 +115,7 @@
                 fecha.</p>
         @endif
 
-    </div>
+
+        </div>
+        </div>
 </div>
