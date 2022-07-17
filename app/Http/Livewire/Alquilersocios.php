@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Illuminate\Http\Request;
 use Livewire\WithPagination;
 use App\Models\Alquiler;
 use App\Models\Socio;
@@ -53,5 +54,48 @@ class Alquilersocios extends Component
         $pdf = \PDF::loadView('livewire.alquilerSocio.pdf', $data);
     
         return $pdf->download('alquilerSocios.pdf');
+    }
+
+
+    public function postmanSocio()
+    {
+        $socio=Socio::all();
+        return ($socio);
+    }
+
+    public function postmanPeliculas(Request $consulta)
+    {
+        $mes = $consulta->anio.'_'.$consulta->mes.'%';
+        $pelicula=Pelicula::latest()
+            ->orWhere('pelfechaestreno', 'LIKE', $mes)
+            ->paginate(15);
+        return ($pelicula);
+    }
+
+    public function postmanDireccionSocio(Request $consulta)
+    {
+        $direccion = '%'.$consulta->direccion.'%';
+        $socio=Socio::latest()
+            ->orWhere('socdireccion', 'LIKE', $direccion)
+            ->paginate(15);
+        return ($socio);
+    }
+
+    public function postmanCedulaSocio(Request $consulta)
+    {
+        $cedula = $consulta->cedula.'%';
+        $socio=Socio::latest()
+            ->orWhere('soccedula', 'LIKE', $cedula)
+            ->paginate(15);
+        return ($socio);
+    }
+
+    public function postmanAlquiler(Request $consulta)
+    {
+        $alqfechadesde = $consulta->aniodesde.'_'.$consulta->mesdesde.'%';
+        $alquiler=Alquiler::latest()
+            ->orWhere('alqfechadesde', 'LIKE', $alqfechadesde)
+            ->paginate(15);
+        return ($alquiler);
     }
 }

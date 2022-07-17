@@ -43,4 +43,5 @@ class RInventarioPeliculas extends Component
     
         return $pdf->download('listaPeliculas.pdf');
     }
+
 }
